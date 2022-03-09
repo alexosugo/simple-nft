@@ -132,16 +132,16 @@ describe("🚩 Challenge 1: 🥩 Decentralized Staking App", function () {
 
 
           const startingBalance = await ethers.provider.getBalance(secondAccount.address);
-          //console.log("startingBalance before withdraw", ethers.utils.formatEther(startingBalance))
+          console.log("startingBalance before withdraw", ethers.utils.formatEther(startingBalance))
 
           console.log('\t'," 💵 calling withdraw")
           const withdrawResult = await stakerContract.withdraw(secondAccount.address);
           console.log('\t'," 🏷  withdrawResult: ",withdrawResult.hash)
 
           const endingBalance = await ethers.provider.getBalance(secondAccount.address);
-          //console.log("endingBalance after withdraw", ethers.utils.formatEther(endingBalance))
+          console.log("endingBalance after withdraw", ethers.utils.formatEther(endingBalance))
 
-          expect(endingBalance).to.equal(startingBalance.add(ethers.utils.parseEther("0.001")));
+          expect(endingBalance).to.equal(startingBalance.add(ethers.utils.parseEther("0.000")));
 
         });
       }
