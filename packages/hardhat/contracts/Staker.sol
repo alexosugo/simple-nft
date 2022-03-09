@@ -12,7 +12,7 @@ contract Staker {
 
   mapping (address => uint256) public balances;
   uint256 public constant threshold = 1 ether;
-  uint256 public deadline = block.timestamp + 30 seconds;
+  uint256 public deadline = block.timestamp + 72 hours;
   bool public openToWithdraw;
 
   constructor(address exampleExternalContractAddress) public {
@@ -30,7 +30,7 @@ contract Staker {
 
   // After some `deadline` allow anyone to call an `execute()` function
   //  It should either call `exampleExternalContract.complete{value: address(this).balance}()` to send all the value
-  function execute() public notCompleted{
+  function execute() public notCompleted {
     require(timeLeft() == 0, "Please wait for deadline to elapse");
 
     if(address(this).balance >= threshold) {
